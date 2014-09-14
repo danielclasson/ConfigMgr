@@ -1,6 +1,5 @@
 ﻿[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
-#test
 
 #Mandatory variables
 
@@ -27,7 +26,7 @@ $textbox.Size = New-Object System.Drawing.Size(120,20)
 #$textbox.Text = "Select source PC:"
 $Form.Controls.Add($textbox)
 
-$ping_computer_click =
+$delete_sccm_object_click =
 {
 #region Actual Code
 
@@ -85,14 +84,14 @@ $OKButton = New-Object System.Windows.Forms.Button
 $OKButton.Location = New-Object System.Drawing.Size(5,80)
 $OKButton.Size = New-Object System.Drawing.Size(110,23)
 $OKButton.Text = "Delete Object"
-$OKButton.Add_Click($ping_computer_click)
+$OKButton.Add_Click($delete_sccm_object_click)
 $Form.Controls.Add($OKButton)
 
 $RemovePXEButton = New-Object System.Windows.Forms.Button
 $RemovePXEButton.Location = New-Object System.Drawing.Size(140,80)
 $RemovePXEButton.Size = New-Object System.Drawing.Size(200,23)
 $RemovePXEButton.Text = "Remove PXE Advertisement"
-$RemovePXEButton.Add_Click($ping_computer_click)
+$RemovePXEButton.Add_Click($delete_sccm_object_click)
 $Form.Controls.Add($RemovePXEButton)
 
 $result_label = New-Object System.Windows.Forms.label
@@ -106,7 +105,7 @@ $statusBar1.Name = "statusBar1"
 $statusBar1.Text = ""
 $form.Controls.Add($statusBar1)
 
-$Form.Add_KeyDown({if ($_.KeyCode -eq "Enter"){& $ping_computer_click}})
+$Form.Add_KeyDown({if ($_.KeyCode -eq "Enter"){& $delete_sccm_object_click}})
 $Form.Add_KeyDown({if ($_.KeyCode -eq "Escape")
 {$Form.Close()}})
 #endregion begin to draw forms
